@@ -32,7 +32,7 @@ module.exports.renderLoginForm=(req,res)=>{
 };
 
 module.exports.signIn=async(req,res)=>{
-    req.flash("success","Welcome to Wanderlust ! You are Logged in!!");
+    req.flash("success","Welcome to StaySync! You are Logged in!!");
     let redirectUrl=res.locals.redirectUrl || "/listings";
     res.redirect(redirectUrl);
     };
