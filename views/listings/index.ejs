@@ -2,87 +2,38 @@
 
     <!-- <h3 class="text-center mt-4">All Listings</h3> -->
 
+
     <div class="container mt-3">
         <div id="filters-wrapper">
             <div id="filters-container" class="d-flex align-items-center">
-                <!-- <button id="scroll-left" class="scroll-btn left">
-                    <i class="fa-solid fa-left-long"></i>
-                </button> -->
-        
-                <!-- <div id="filters" class="d-flex align-items-center gap-3" >
-                    <a href="/listings" class="filter">
-                        <i class="fa-solid fa-globe text-primary me-2"></i>
-                        <span class="fw-bold">All</span>
-                    </a>
-                    <a href="/listings/category/Trending" class="filter">
-                        <i class="fa-solid fa-fire text-danger me-2"></i>
-                        <span class="fw-bold">Trending</span>
-                    </a>
-                    <a href="/listings/category/Hotel" class="filter">
-                        <i class="fa-solid fa-hotel text-primary me-2"></i>
-                        <span class="fw-bold">Hotels</span>
-                    </a>
-                    <a href="/listings/category/Mountain City" class="filter">
-                        <i class="fa-solid fa-mountain-city text-primary me-2"></i>
-                        <span class="fw-bold">Mountain City</span>
-                    </a>
-                    <a href="/listings/category/Castle" class="filter">
-                        <i class="fa-brands fa-fort-awesome text-primary me-2"></i>
-                        <span class="fw-bold">Castle</span>
-                    </a>
-                    <a href="/listings/category/Swimming Pool" class="filter">
-                        <i class="fa-solid fa-person-swimming text-primary me-2"></i>
-                        <span class="fw-bold">Swimming Pool</span>
-                    </a>
-                    <a href="/listings/category/Camping" class="filter">
-                        <i class="fa-solid fa-campground text-primary me-2"></i>
-                        <span class="fw-bold">Camping</span>
-                    </a>
-                    <a href="/listings/category/Sea Beach" class="filter">
-                        <i class="fa-solid fa-umbrella-beach text-primary me-2"></i>
-                        <span class="fw-bold">Sea Beach</span>
-                    </a>
-                    <a href="/listings/category/Snow" class="filter">
-                        <i class="fa-solid fa-snowflake text-primary me-2"></i>
-                        <span class="fw-bold">Snow</span>
-                    </a>
-                </div> -->
-        
-
-
-                <!-- >>>>>>>>>>>>>>>>>> -->
                 <div id="filters" class="d-flex align-items-center gap-3">
                     <a href="javascript:void(0);" class="filter" onclick="filterListings('')">
                         <i class="fa-solid fa-globe text-primary me-2"></i>
                         <span class="fw-bold">All</span>
                     </a>
-                    <a href="javascript:void(0);" class="filter" onclick="filterListings('Trending')">
-                        <i class="fa-solid fa-fire text-danger me-2"></i>
-                        <span class="fw-bold">Trending</span>
-                    </a>
-                    <a href="javascript:void(0);" class="filter" onclick="filterListings('Hotel')">
+                    <a href="javascript:void(0);" class="filter" onclick="filterListings('Hotels')">
                         <i class="fa-solid fa-hotel text-primary me-2"></i>
                         <span class="fw-bold">Hotels</span>
                     </a>
-                    <a href="javascript:void(0);" class="filter" onclick="filterListings('Mountain City')">
-                        <i class="fa-solid fa-mountain-city text-primary me-2"></i>
-                        <span class="fw-bold">Mountain City</span>
+                    <a href="javascript:void(0);" class="filter" onclick="filterListings('Mountain')">
+                        <i class="fa-solid fa-mountain text-primary me-2"></i>
+                        <span class="fw-bold">Mountain</span>
                     </a>
-                    <a href="javascript:void(0);" class="filter" onclick="filterListings('Castle')">
+                    <a href="javascript:void(0);" class="filter" onclick="filterListings('Castles')">
                         <i class="fa-brands fa-fort-awesome text-primary me-2"></i>
-                        <span class="fw-bold">Castle</span>
+                        <span class="fw-bold">Castles</span>
                     </a>
-                    <a href="javascript:void(0);" class="filter" onclick="filterListings('Swimming Pool')">
+                    <a href="javascript:void(0);" class="filter" onclick="filterListings('Pools')">
                         <i class="fa-solid fa-person-swimming text-primary me-2"></i>
-                        <span class="fw-bold">Swimming Pool</span>
+                        <span class="fw-bold">Pools</span>
                     </a>
                     <a href="javascript:void(0);" class="filter" onclick="filterListings('Camping')">
                         <i class="fa-solid fa-campground text-primary me-2"></i>
                         <span class="fw-bold">Camping</span>
                     </a>
-                    <a href="javascript:void(0);" class="filter" onclick="filterListings('Sea Beach')">
+                    <a href="javascript:void(0);" class="filter" onclick="filterListings('Beach')">
                         <i class="fa-solid fa-umbrella-beach text-primary me-2"></i>
-                        <span class="fw-bold">Sea Beach</span>
+                        <span class="fw-bold">Beach</span>
                     </a>
                     <a href="javascript:void(0);" class="filter" onclick="filterListings('Snow')">
                         <i class="fa-solid fa-snowflake text-primary me-2"></i>
@@ -90,53 +41,39 @@
                     </a>
                 </div>
                 
-                <!-- <button id="scroll-right" class="scroll-btn right">
-                    <i class="fa-solid fa-right-long"></i>
-                </button> -->
-        
-                <!-- Tax Toggle - Placed Outside the Scroll Section -->
                 <div class="tax-toggle">
                     <div class="form-check-reverse form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Display total after Taxes</label>
-                      </div>
+                        <input class="form-check-input" type="checkbox" role="switch" id="taxToggle">
+                        <label class="form-check-label" for="taxToggle">Display total after Taxes</label>
+                    </div>
                 </div>
             </div>
         </div>
-        
-       
     </div>
-
+    
     <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4 mt-4">
-        <% for (let listing of allListings) { %>
+        <% allListings.forEach(listing => { %>
             <div class="col">
                 <div class="card h-100 listing-card shadow-sm border-0 rounded-4">
                     <a href="/listings/<%= listing._id %>" class="listing-links">
-
                         <img src="<%= listing.image.url %>" class="card-img-top" alt="Listing Image"
                             style="height: 200px; object-fit: cover;">
-
-
                     </a>
                     <div class="card-body">
                         <h5 class="card-title listing-title">
-                            <b>
-                                <%= listing.title %>
-                            </b>
+                            <b><%= listing.title %></b>
                         </h5>
                         <p class="card-text text-muted">
                             <%= listing.description.substring(0, 60) %>...
-                                <br>
-                                <span class="text-dark fw-bold">&#8377;<%= listing.price.toLocaleString("en-IN") %>
-                                        /night</span>
-                                        <i class="tax-info">&nbsp;&nbsp;+18% GST</i>
+                            <br>
+                            <span class="text-dark fw-bold">₹<%= listing.price.toLocaleString("en-IN") %>/night</span>
+                            <span class="tax-info">+18% GST</span>
                         </p>
                         <a href="/listings/<%= listing._id %>" class="btn btn-dark w-100">View Details</a>
                     </div>
                 </div>
             </div>
-            <% } %>
-    </div>
+        <% }); %>
     </div>
 
     <style>
@@ -297,21 +234,13 @@
     </style>
 
     <script>
-
-          function filterListings(category){
-             window.location.href=`/listings?category=${category}`;
-          }
-        let taxSwitch= document.getElementById("flexSwitchCheckDefault");
-        taxSwitch.addEventListener("click",()=>{
-           let taxInfo=document.getElementsByClassName("tax-info");
-           for(info of taxInfo){
-            if( info.style.display!="inline"){
-                info.style.display="inline";
-            }else{
-                info.style.display="none";
-            }
-            
-           }
-        })
+ function filterListings(category) {
+        window.location.href = `/listings${category ? `?category=${category}` : ''}`;
+    }
+    document.getElementById('taxToggle').addEventListener('change', function() {
+        document.querySelectorAll('.tax-info').forEach(el => {
+            el.style.display = this.checked ? 'inline' : 'none';
+        });
+    });
     </script>
 

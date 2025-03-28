@@ -60,16 +60,17 @@
                         <div class="mb-3">
                             <label for="category" class="form-label">Select Category</label>
                             <select name="listing[category]" id="category" class="form-control" required>
-                                <option value="Hotel">Hotels</option>
-                                <option value="Mountain City">Mountain City</option>
-                                <option value="Castel">Castel</option>
-                                <option value="Swimming-pool">Swimming pool</option>
-                                <option value="Sea beach">Sea-beach</option>
-                                <option value="Snow">Snow</option>
-                                <option value="Camping">Camping</option>
-                                <option value="Other">Other</option>
+                                <option value="Hotels" <%= listing && listing.category === "Hotels" ? "selected" : "" %>>Hotels</option>
+                                <option value="Mountain" <%= listing && listing.category === "Mountain" ? "selected" : "" %>>Mountain</option>
+                                <option value="Castles" <%= listing && listing.category === "Castles" ? "selected" : "" %>>Castles</option>
+                                <option value="Pools" <%= listing && listing.category === "Pools" ? "selected" : "" %>>Swimming Pools</option>
+                                <option value="Beach" <%= listing && listing.category === "Beach" ? "selected" : "" %>>Beach</option>
+                                <option value="Snow" <%= listing && listing.category === "Snow" ? "selected" : "" %>>Snow</option>
+                                <option value="Camping" <%= listing && listing.category === "Camping" ? "selected" : "" %>>Camping</option>
+                                <option value="Other" <%= listing && listing.category === "Other" ? "selected" : "" %>>Other</option>
                             </select>
                         </div>
+                        
                         <div class="text-center">
                             <button class="btn btn-primary w-100 fw-bold py-2 mt-3">Save Changes</button>
                         </div>

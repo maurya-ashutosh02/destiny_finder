@@ -30,17 +30,9 @@ const listingSchema = new Schema({
     },
     category: {
         type: String,
-        enum: [
-            "Hotels", 
-            "Mountain City", 
-            "Castle", 
-            "Swimming pool", 
-            "Snow", 
-            "Sea beach", 
-            "Camping", 
-            "Other"
-        ],
-        default: "Hotels"
+        enum: ["Hotels", "Mountain", "Castles", "Pools", "Snow", "Beach", "Camping", "Other"],
+        required: true,
+      
     }
 });
 
