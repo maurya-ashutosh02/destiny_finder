@@ -1,0 +1,317 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+    <!-- <h3 class="text-center mt-4">All Listings</h3> -->
+
+    <div class="container mt-3">
+        <div id="filters-wrapper">
+            <div id="filters-container" class="d-flex align-items-center">
+                <!-- <button id="scroll-left" class="scroll-btn left">
+                    <i class="fa-solid fa-left-long"></i>
+                </button> -->
+        
+                <!-- <div id="filters" class="d-flex align-items-center gap-3" >
+                    <a href="/listings" class="filter">
+                        <i class="fa-solid fa-globe text-primary me-2"></i>
+                        <span class="fw-bold">All</span>
+                    </a>
+                    <a href="/listings/category/Trending" class="filter">
+                        <i class="fa-solid fa-fire text-danger me-2"></i>
+                        <span class="fw-bold">Trending</span>
+                    </a>
+                    <a href="/listings/category/Hotel" class="filter">
+                        <i class="fa-solid fa-hotel text-primary me-2"></i>
+                        <span class="fw-bold">Hotels</span>
+                    </a>
+                    <a href="/listings/category/Mountain City" class="filter">
+                        <i class="fa-solid fa-mountain-city text-primary me-2"></i>
+                        <span class="fw-bold">Mountain City</span>
+                    </a>
+                    <a href="/listings/category/Castle" class="filter">
+                        <i class="fa-brands fa-fort-awesome text-primary me-2"></i>
+                        <span class="fw-bold">Castle</span>
+                    </a>
+                    <a href="/listings/category/Swimming Pool" class="filter">
+                        <i class="fa-solid fa-person-swimming text-primary me-2"></i>
+                        <span class="fw-bold">Swimming Pool</span>
+                    </a>
+                    <a href="/listings/category/Camping" class="filter">
+                        <i class="fa-solid fa-campground text-primary me-2"></i>
+                        <span class="fw-bold">Camping</span>
+                    </a>
+                    <a href="/listings/category/Sea Beach" class="filter">
+                        <i class="fa-solid fa-umbrella-beach text-primary me-2"></i>
+                        <span class="fw-bold">Sea Beach</span>
+                    </a>
+                    <a href="/listings/category/Snow" class="filter">
+                        <i class="fa-solid fa-snowflake text-primary me-2"></i>
+                        <span class="fw-bold">Snow</span>
+                    </a>
+                </div> -->
+        
+
+
+                <!-- >>>>>>>>>>>>>>>>>> -->
+                <div id="filters" class="d-flex align-items-center gap-3">
+                    <a href="javascript:void(0);" class="filter" onclick="filterListings('')">
+                        <i class="fa-solid fa-globe text-primary me-2"></i>
+                        <span class="fw-bold">All</span>
+                    </a>
+                    <a href="javascript:void(0);" class="filter" onclick="filterListings('Trending')">
+                        <i class="fa-solid fa-fire text-danger me-2"></i>
+                        <span class="fw-bold">Trending</span>
+                    </a>
+                    <a href="javascript:void(0);" class="filter" onclick="filterListings('Hotel')">
+                        <i class="fa-solid fa-hotel text-primary me-2"></i>
+                        <span class="fw-bold">Hotels</span>
+                    </a>
+                    <a href="javascript:void(0);" class="filter" onclick="filterListings('Mountain City')">
+                        <i class="fa-solid fa-mountain-city text-primary me-2"></i>
+                        <span class="fw-bold">Mountain City</span>
+                    </a>
+                    <a href="javascript:void(0);" class="filter" onclick="filterListings('Castle')">
+                        <i class="fa-brands fa-fort-awesome text-primary me-2"></i>
+                        <span class="fw-bold">Castle</span>
+                    </a>
+                    <a href="javascript:void(0);" class="filter" onclick="filterListings('Swimming Pool')">
+                        <i class="fa-solid fa-person-swimming text-primary me-2"></i>
+                        <span class="fw-bold">Swimming Pool</span>
+                    </a>
+                    <a href="javascript:void(0);" class="filter" onclick="filterListings('Camping')">
+                        <i class="fa-solid fa-campground text-primary me-2"></i>
+                        <span class="fw-bold">Camping</span>
+                    </a>
+                    <a href="javascript:void(0);" class="filter" onclick="filterListings('Sea Beach')">
+                        <i class="fa-solid fa-umbrella-beach text-primary me-2"></i>
+                        <span class="fw-bold">Sea Beach</span>
+                    </a>
+                    <a href="javascript:void(0);" class="filter" onclick="filterListings('Snow')">
+                        <i class="fa-solid fa-snowflake text-primary me-2"></i>
+                        <span class="fw-bold">Snow</span>
+                    </a>
+                </div>
+                
+                <!-- <button id="scroll-right" class="scroll-btn right">
+                    <i class="fa-solid fa-right-long"></i>
+                </button> -->
+        
+                <!-- Tax Toggle - Placed Outside the Scroll Section -->
+                <div class="tax-toggle">
+                    <div class="form-check-reverse form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Display total after Taxes</label>
+                      </div>
+                </div>
+            </div>
+        </div>
+        
+       
+    </div>
+
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4 mt-4">
+        <% for (let listing of allListings) { %>
+            <div class="col">
+                <div class="card h-100 listing-card shadow-sm border-0 rounded-4">
+                    <a href="/listings/<%= listing._id %>" class="listing-links">
+
+                        <img src="<%= listing.image.url %>" class="card-img-top" alt="Listing Image"
+                            style="height: 200px; object-fit: cover;">
+
+
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title listing-title">
+                            <b>
+                                <%= listing.title %>
+                            </b>
+                        </h5>
+                        <p class="card-text text-muted">
+                            <%= listing.description.substring(0, 60) %>...
+                                <br>
+                                <span class="text-dark fw-bold">&#8377;<%= listing.price.toLocaleString("en-IN") %>
+                                        /night</span>
+                                        <i class="tax-info">&nbsp;&nbsp;+18% GST</i>
+                        </p>
+                        <a href="/listings/<%= listing._id %>" class="btn btn-dark w-100">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+    </div>
+    </div>
+
+    <style>
+        #filters-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            /* Ensures it stays above other content */
+            background: white;
+            padding: 10px 0;
+            border-bottom: 2px solid #ddd;
+            /* Adds a separator */
+        }
+
+        /* Enables horizontal scrolling */
+        #filters {
+            display: flex;
+            overflow-x: auto;
+            /* Allows horizontal scrolling */
+            white-space: nowrap;
+            padding: 10px;
+            gap: 15px;
+            scrollbar-width: none;
+            /* Hide scrollbar for Firefox */
+            -ms-overflow-style: none;
+            /* Hide scrollbar for IE/Edge */
+        }
+
+        #filters {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            /* Ensures it stays above other content */
+            background: white;
+            padding: 10px 0;
+            white-space: nowrap;
+            overflow-x: auto;
+            /* Enables horizontal scrolling on small screens */
+            scrollbar-width: none;
+            /* Hide scrollbar on Firefox */
+            -ms-overflow-style: none;/
+            /* Ensures even spacing between filters */
+        }
+
+        #filters::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
+            background: #f8f9fa;
+            border-radius: 50px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .filter:hover {
+            transform: scale(1.05);
+            background: #e9ecef;
+        }
+
+        .filter i {
+            font-size: 1.2rem;
+        }
+
+        .filter span {
+            font-size: .8rem;
+        }
+
+        .tax-toggle {
+            margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 8px 15px;
+    border-radius: 50px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    gap: 10px;
+    flex-shrink: 0;
+}
+.tax-toggle:hover {
+    transform: scale(1.05);
+    background: #e9ecef;
+}
+
+        /* Title Font - Tangerine */
+        /* .listing-title {
+    font-family: 'Tangerine', cursive;
+    font-size: 2rem;
+    text-align: center;
+} */
+
+        /* Listing Card Styling */
+        .listing-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .listing-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Make links cover the entire card */
+        .listing-links {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .listing-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #filters {
+                display: flex;
+                overflow-x: auto;
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .filter {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+        }
+        .tax-info{
+            display:none;
+        }
+        @media (max-width: 768px) {
+    .tax-toggle {
+        flex-direction: row;
+        align-items: center;
+        width: 30%;
+        padding: 10px;
+        text-align: center;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    
+    .tax-toggle .form-check-label {
+        font-size: 0.7rem;
+    }
+
+    .form-check-input {
+        transform: scale(.8); /* Make toggle button slightly bigger */
+    }
+}
+    </style>
+
+    <script>
+
+          function filterListings(category){
+             window.location.href=`/listings?category=${category}`;
+          }
+        let taxSwitch= document.getElementById("flexSwitchCheckDefault");
+        taxSwitch.addEventListener("click",()=>{
+           let taxInfo=document.getElementsByClassName("tax-info");
+           for(info of taxInfo){
+            if( info.style.display!="inline"){
+                info.style.display="inline";
+            }else{
+                info.style.display="none";
+            }
+            
+           }
+        })
+    </script>
+

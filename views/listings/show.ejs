@@ -1,0 +1,165 @@
+<% layout("/layouts/boilerplate.ejs")%>
+
+    <div class="container mt-3">
+        <div class="row justify-content-center ">
+            <div class="col-md-8">
+                <h3 class="text-center fw-bold mb-4 listing-title  ">
+                    <%= listing.title %>
+                </h3>
+
+                <div class="card shadow-sm border-0 rounded-4">
+                    <img src="<%= listing.image.url %>" class="card-img-top rounded-top show-image" alt="Listing Image">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b>
+                                <%= listing.description %>
+                            </b><br>
+                            <span class="text-success fw-bold fs-5">&#8377;<%= listing.price.toLocaleString("en-IN") %>
+                            </span><br>
+                            <span class="text-muted">
+                                <%= listing.location %>, <%= listing.country %>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+
+                <% if(currUser && listing.Owner && listing.Owner._id.equals(currUser._id)) { %>
+                    <div class="d-flex justify-content-between mt-3">
+                        <a href="/listings/<%= listing._id %>/edit" class="btn btn-primary w-45">Edit</a>
+                        <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+                            <button class="btn btn-danger w-45">Delete</button>
+                        </form>
+                    </div>
+                    <% } %>
+                        <hr>
+
+                        <% if(currUser) { %>
+                            <div class="mt-5">
+                                <h4 class="fw-bold">Give a Review</h4>
+                                <hr>
+                                <form action="/listings/<%= listing._id %>/reviews" method="post"
+                                    class="needs-validation">
+                                    <div class="mb-3 mt-3">
+                                        <label for="rating" class="form-label"></label>
+                                        <fieldset class="starability-heartbeat">
+                                            <legend>Your Rating:</legend>
+                                            <input type="radio" id="rate1" name="review[rating]" value="1" />
+                                            <label for="rate1" title="Terrible">1 star</label>
+                                            <input type="radio" id="rate2" name="review[rating]" value="2" />
+                                            <label for="rate2" title="Not good">2 stars</label>
+                                            <input type="radio" id="rate3" name="review[rating]" value="3" />
+                                            <label for="rate3" title="Average">3 stars</label>
+                                            <input type="radio" id="rate4" name="review[rating]" value="4" />
+                                            <label for="rate4" title="Very good">4 stars</label>
+                                            <input type="radio" id="rate5" name="review[rating]" value="5" />
+                                            <label for="rate5" title="Amazing">5 stars</label>
+                                        </fieldset>
+                                    </div>
+                                    <hr>
+
+                                    <div class="mb-3">
+                                        <label for="comment" class="form-label">Comment</label>
+                                        <textarea name="review[comment]" id="comment" cols="30" rows="3"
+                                            class="form-control rounded-3 shadow-sm" required></textarea>
+                                    </div>
+
+                                    <button class="btn btn-outline-dark w-100">Submit</button>
+                                </form>
+                            </div>
+                            <% } %>
+
+                                <hr class="my-4">
+
+                                <% if(listing.reviews.length>0){%>
+                                    <div class="row">
+                                        <h4 class="fw-bold">All Reviews</h4>
+                                        <% for(let review of listing.reviews) { %>
+                                            <div class="card col-md-5 mb-3 ms-3 shadow-sm border-light">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">@<%= review.author.username %>
+                                                    </h5>
+                                                    <p class="starability-result card-text"
+                                                        data-rating="<%= review.rating %>"></p>
+                                                    <p class="card-text">
+                                                        <%= review.comment %>
+                                                    </p>
+                                                </div>
+
+                                                <% if(currUser && review.author._id.equals(currUser._id)) { %>
+                                                    <form method="post"
+                                                        action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
+                                                        <button class="btn btn-sm btn-outline-danger">Delete</button>
+                                                    </form>
+                                                    <% } %>
+                                            </div>
+                                            <% } %>
+                                    </div>
+                                    <%}%>
+                                        <!-- <div class="col-6 mb-3">
+                                            <h3>Where you'll be</h3>
+                                            <div id="map">
+
+                                            </div>
+                                        </div> -->
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+    <style>
+        .btn {
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+        }
+
+        .starability-result {
+            font-size: 1.2rem;
+            color: #f39c12;
+        }
+
+        .listing-title {
+            font-family: 'Tangerine', cursive;
+            font-size: 2.5rem;
+            /* Adjust size as needed */
+            font-weight: 700;
+            text-align: center;
+            /* Optional */
+        }
+    </style>
+    <!-- <script>
+        let mapToken = " <%= process.env.MAP_TOKEN %>";
+        console.log(mapToken);
+        //Add your LocationIQ Maps Access Token here (not the API token!)
+
+        locationiq.key = mapToken;
+        //Define the map and configure the map's theme
+        constmap = new maplibregl.Map({
+            container: 'map',
+            style: locationiq.getLayer("Streets"),
+            zoom: 12,
+            center: [-122.42, 37.779]
+        });
+
+    </script> -->

@@ -1,0 +1,53 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="container d-flex justify-content-center align-items-center" style="height: 80vh;">
+    <div class="col-md-6 col-sm-8 col-10 shadow-lg p-5 rounded-3 bg-light">
+        <h2 class="text-center mb-4">Login</h2>
+
+        <form action="/login" method="post" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input name="username" id="username" type="text" class="form-control" required>
+                <div class="invalid-feedback">Please enter your username.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input name="password" id="password" type="password" class="form-control" required>
+                <div class="invalid-feedback">Password is required.</div>
+            </div>
+
+            <button class="btn btn-success w-100">Login</button>
+        </form>
+
+        <p class="text-center mt-3">
+            Don't have an account? <a href="/signup" class="text-decoration-none">Sign up</a>
+        </p>
+    </div>
+</div>
+
+<style>
+    /* Center the form container */
+.container {
+    height: 100vh;
+}
+
+/* Form box styling */
+.shadow-lg {
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Button styling */
+.btn-success {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .col-md-6 {
+        width: 90%;
+    }
+}
+
+</style>

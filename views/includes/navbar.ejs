@@ -1,0 +1,173 @@
+<!-- 
+<nav class="navbar navbar-expand-md bg-light border-bottom fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/listings"><i class="fa-solid fa-location-arrow"></i></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/listings">Explore</a>
+               
+            </div>
+            <div class="navbar-nav ms-auto">
+                <form action="/listings" method="GET" class="d-flex mb-3">
+                    <input type="text" name="search" class="form-control me-2" placeholder="Search listings..." value="<%= search || '' %>">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+                
+            </div>
+
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/listings/new">Airbnb your home</a>
+                <% if(!currUser){%>
+                    <a class="nav-link active" href="/signup"><b>Sign up</b></a>
+                    <a class="nav-link" href="/login"><b>Login</b></a>
+                    <%}%>
+                        <% if(currUser){%>
+                            <a class="nav-link" href="/logout"><b>Logout</b></a>
+                            <%}%>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<style>
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .navbar-nav .btn {
+        border-radius: 20px;
+        font-size: 0.9rem;
+    }
+    .search-input{
+        border-radius: 20rem;
+        padding: 0.5rem 3rem 0.5rem 3rem;
+    }
+    .btn-search{
+        background-color: #fe424d;
+        color: #ffff;
+        padding: 0 1rem 0 1rem;
+    
+    }
+    .btn-search:hover{
+        background-color: #fe424d;
+        color: #ffff;
+    
+    }
+    .btn-search i{
+        display: inline;
+        margin-right:.5rem ;
+    }
+</style> -->
+
+<nav class="navbar navbar-expand-md bg-light border-bottom fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/listings"><i class="fa-solid fa-location-arrow"></i></a>
+        
+        <!-- Mobile Menu Button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu"
+            aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Main Navbar (Desktop) -->
+        <div class="collapse navbar-collapse d-none d-md-flex" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/listings">Explore</a>
+            </div>
+            <div class="navbar-nav ms-auto">
+                <form action="/listings" method="GET" class="d-flex mb-3">
+                    <input type="text" name="search" class="form-control me-2 search-input" placeholder="Search listings..." value="<%= search || '' %>">
+                    <button type="submit" class="btn btn-search"><i class="fa fa-search"></i> Search</button>
+                </form>
+            </div>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/listings/new">Airbnb your home</a>
+                <% if(!currUser){%>
+                    <a class="nav-link active" href="/signup"><b>Sign up</b></a>
+                    <a class="nav-link" href="/login"><b>Login</b></a>
+                <% } %>
+                <% if(currUser){%>
+                    <a class="nav-link" href="/logout"><b>Logout</b></a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Offcanvas Menu -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+    <div class="offcanvas-header">
+        <h5 id="mobileMenuLabel">Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <a class="nav-link" href="/listings">Explore</a>
+        <hr>
+        <form action="/listings" method="GET" class="d-flex mb-3">
+            <input type="text" name="search" class="form-control me-2 search-input" placeholder="Search listings..." value="<%= search || '' %>">
+            <button type="submit" class="btn btn-search"><i class="fa fa-search"></i> Search</button>
+        </form>
+        <hr>
+        <a class="nav-link" href="/listings/new">Airbnb your home</a>
+        <% if(!currUser){%>
+            <a class="nav-link" href="/signup"><b>Sign up</b></a>
+            <a class="nav-link" href="/login"><b>Login</b></a>
+        <% } %>
+        <% if(currUser){%>
+            <a class="nav-link" href="/logout"><b>Logout</b></a>
+        <% } %>
+    </div>
+</div>
+
+<!-- Styles -->
+<style>
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .navbar-nav .btn {
+        border-radius: 20px;
+        font-size: 0.9rem;
+    }
+
+    .search-input {
+        border-radius: 20rem;
+        padding: 0.5rem 3rem 0.5rem 3rem;
+    }
+
+    .btn-search {
+        background-color: #fe424d;
+        color: #ffff;
+        padding: 0 1rem 0 1rem;
+    }
+
+    .btn-search:hover {
+        background-color: #fe424d;
+        color: #ffff;
+    }
+
+    .btn-search i {
+        display: inline;
+        margin-right: .5rem;
+    }
+
+    /* Offcanvas styling */
+    .offcanvas {
+        width: 250px;
+    }
+</style>

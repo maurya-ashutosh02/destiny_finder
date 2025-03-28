@@ -1,0 +1,166 @@
+body {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.container{
+flex: 1;
+}
+.navbar {
+    background-color: white;
+    height: 3.5rem;
+}
+
+.fa-location-arrow {
+    color: #fe424d;
+    font-size: 2rem;
+}
+
+.nav-link {
+    color: #222222 !important;
+}
+
+/*footer*/
+.f-info-links a {
+    text-decoration: none;
+    color: #222222;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+
+}
+
+.f-info-links,
+.f-info-social,
+.f-info-brand {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-info-social i {
+    font-size: 1.2rem;
+    margin-right: 1rem;
+
+}
+
+.f-info {
+    text-align: center;
+    height: 5rem;
+    background-color: rgb(168, 163, 163);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+/*/cards*/
+
+.listing-card {
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top {
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body {
+    padding: 0;
+}
+
+.card-text-p {
+    font-weight: 400;
+}
+
+.card-title {
+    font-family: 'Tangerine', serif;
+    font-size: 2rem;
+}
+
+
+.listing-links {
+    text-decoration: none;
+    color: #222222;
+}
+
+/* card effect */
+.card-img-overlay {
+    color: black;
+    opacity: 0;
+}
+
+.card-img-overlay:hover {
+    opacity: 0.2;
+    background-color: rgb(177, 203, 226);
+}
+
+/* new page */
+.add-btn{
+    background-color: rgb(248, 119, 119) !important;
+    border: none !important;
+}
+
+.add-btn{
+    background-color: rgb(248, 119, 119) !important;
+    border: none !important;
+}
+/*show page*/
+.show-image{
+height: 30vh;
+}
+
+.btns{
+    display: flex;
+}
+
+.show-card{
+    padding-left: 0;
+    padding-right: 0;
+}
+.edit-btn{
+    background-color: rgb(248, 119, 119) !important;
+    border: none !important;
+}
+
+/* Navbar Styling */
+.navbar {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile Navbar Menu */
+@media (max-width: 768px) {
+    .navbar-nav {
+        background: white; /* Ensures proper visibility */
+        padding: 10px 0;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-nav .nav-item {
+        padding: 10px 0;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #333;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: #007bff; /* Change color on hover */
+        background-color: rgba(0, 123, 255, 0.1);
+        border-radius: 5px;
+    }
+}
+
+#map {
+    height: 400px;
+    width: 80vh;
+    }
